@@ -8,30 +8,35 @@ const galleryPicture = getGalleryPicture(galleryItems);
 gridLi.insertAdjacentHTML("beforeend", galleryPicture);
   console.log(getGalleryPicture(galleryItems));
 function getGalleryPicture(galleryItems) {
-  return  galleryItems.map(({priview, original})=> {
+  return  galleryItems.map(({priview, original, description})=> {
       return  `<li><div class="gallery__item">
-      <a class="gallery__link" href="large-image.jpg">
+      <a class="gallery__link" href="${original}" target="_self">
         <img
           class="gallery__image"
           src="${original}"
-          data-source="large-image.jpg"
-          alt="Image description"
+          data-source="${original}"
+          alt="${description}"
+          title = "${description}"
         />
       </a>
     </div></li>`;
   }).join(``);  
 
 };
-// const newListner = document.querySelector(`.gallery__image`);
 
+
+
+gridLi.addEventListener(`click`, addPhotoClick);
+let lightbox = new SimpleLightbox('.gallery a', {captionType:'alt', captionDelay: 250, captionPosition: 'bottom'});
+// const newListner = document.querySelector(`.gallery__image`);
+function addPhotoClick(event) {
+  // event.preventDefault();
+  if(event.target.nodeName !== `IMG`) {
+    return;
+  }
+  };
+// classList.add("basicLightbox");
+// mainPic.hasClass('basicLightbox') ? mainPic.removeClass('basicLightbox') : mainPic.addClass('basicLightbox');
 // gridLi.addEventListener(`click`, addPhotoClick);
 // function addPhotoClick(event) {
-// const mainPic = event.target;
-// mainPic.classList.add("basicLightbox");
-// mainPic.hasClass('basicLightbox') ? mainPic.removeClass('basicLightbox') : mainPic.addClass('basicLightbox');
-// };
-
-gridLi.click(function(event) {
-  let el = event.target;
-  el.hasClass('basicLightbox') ? el.removeClass('basicLightbox') : el.addClass('basicLightbox');
-});
+// const mainPic = event.target;// };

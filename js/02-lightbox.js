@@ -8,14 +8,14 @@ const galleryPicture = getGalleryPicture(galleryItems);
 items.insertAdjacentHTML("beforeend", galleryPicture);
   console.log(getGalleryPicture(galleryItems));
 function getGalleryPicture(galleryItems) {
-  return  galleryItems.map(({priview, original})=> {
+  return  galleryItems.map(({priview, original, description})=> {
       return  `<li><div class="gallery__item">
-      <a class="gallery__link" href="large-image.jpg">
+      <a class="gallery__link" href="${original}"  target="_self">
         <img
           class="gallery__image"
           src="${original}"
-          data-source="large-image.jpg"
-          alt="Image description"
+          data-source="${original}"
+          alt="${description}"
         />
       </a>
     </div></li>`;
