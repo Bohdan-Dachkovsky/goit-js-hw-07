@@ -22,8 +22,13 @@ function getGalleryPicture(galleryItems) {
   }).join(``);  
 
 };
-
-items.click(function(event) {
-  let el = event.target;
-  el.hasClass('basicLightbox') ? el.removeClass('basicLightbox') : el.addClass('basicLightbox');
+let lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+  captionPosition: 'top',
+  navText: ['<', '>']
 });
+// items.click(function(event) {
+//   let el = event.target;
+//   el.hasClass('basicLightbox') ? el.removeClass('basicLightbox') : el.addClass('basicLightbox');
+// });
